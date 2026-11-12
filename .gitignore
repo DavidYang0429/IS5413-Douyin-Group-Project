@@ -7,3 +7,5 @@
 .env.*
 !.env.example
 node_modules/
+.vercel/
+prototype/public/

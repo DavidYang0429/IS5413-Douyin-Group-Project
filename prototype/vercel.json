@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "python3 build_static.py",
+  "outputDirectory": "public",
+  "regions": ["sin1"],
+  "functions": {
+    "api/*.py": {
+      "includeFiles": "{app.py,supabase-ca.crt}",
+      "maxDuration": 30
+    }
+  }
+}
