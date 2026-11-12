@@ -2,11 +2,12 @@
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const fs=require('fs'),path=require('path'),assert=require('assert');
 const root=path.resolve(__dirname,'..');
+const baseURL=process.env.BASE_URL||'http://127.0.0.1:5413';
 const config=JSON.parse(fs.readFileSync(path.join(root,'.local/connection.json')));
 const output=path.resolve(root,'../验证记录/browser');fs.mkdirSync(output,{recursive:true});
 (async()=>{const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_EXECUTABLE_PATH?{executablePath:process.env.PLAYWRIGHT_EXECUTABLE_PATH}:{})});const checks=[];const stamp=Date.now();const demoCaption='Final demo · Relational data in motion '+stamp;const collectionName='Final demo '+stamp;try{
 const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(String(e)));
-await page.goto('http://127.0.0.1:5413');await page.screenshot({path:path.join(output,'01_login.png')});
+await page.goto(baseURL);await page.screenshot({path:path.join(output,'01_login.png')});
 await page.locator('[name=password]').fill(config.users['1'].password);await page.getByRole('button',{name:'Enter workspace'}).click();await page.locator('.card').first().waitFor({timeout:15000});checks.push('Database-authenticated browser login');
 await page.screenshot({path:path.join(output,'02_feed.png'),fullPage:false});
 await page.waitForFunction(()=>document.querySelector('video')?.readyState>=1);const media=await page.locator('video').first().evaluate(v=>({ready:v.readyState,error:v.error?.message||null}));assert(!media.error);checks.push('Bundled original demo media loads');
