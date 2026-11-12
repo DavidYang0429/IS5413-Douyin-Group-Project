@@ -1,0 +1,704 @@
+{
+  "USER": [
+    {
+      "phone": "+19990000001",
+      "user_id": 1,
+      "nickname": "Demo_Ada",
+      "registered_at": "2026-11-01T08:00:00+00:00",
+      "account_status": "ACTIVE"
+    },
+    {
+      "phone": "+19990000002",
+      "user_id": 2,
+      "nickname": "Demo_Ben",
+      "registered_at": "2026-11-01T08:01:00+00:00",
+      "account_status": "ACTIVE"
+    },
+    {
+      "phone": "+19990000003",
+      "user_id": 3,
+      "nickname": "Demo_Chen",
+      "registered_at": "2026-11-01T08:02:00+00:00",
+      "account_status": "ACTIVE"
+    },
+    {
+      "phone": "+19990000004",
+      "user_id": 4,
+      "nickname": "Demo_Dina",
+      "registered_at": "2026-11-01T08:03:00+00:00",
+      "account_status": "ACTIVE"
+    },
+    {
+      "phone": "+19990000005",
+      "user_id": 5,
+      "nickname": "Demo_Eli",
+      "registered_at": "2026-11-01T08:04:00+00:00",
+      "account_status": "ACTIVE"
+    },
+    {
+      "phone": "+19990000006",
+      "user_id": 6,
+      "nickname": "Demo_Faye",
+      "registered_at": "2026-11-01T08:05:00+00:00",
+      "account_status": "DISABLED"
+    }
+  ],
+  "MUSIC": [
+    {
+      "title": "Campus Beat",
+      "music_id": 1,
+      "audio_url": "https://example.invalid/audio/campus.mp3",
+      "artist_name": "Demo Artist A"
+    },
+    {
+      "title": "Coffee Loop",
+      "music_id": 2,
+      "audio_url": "https://example.invalid/audio/coffee.mp3",
+      "artist_name": "Demo Artist B"
+    },
+    {
+      "title": "Practice Track",
+      "music_id": 3,
+      "audio_url": "https://example.invalid/audio/practice.mp3",
+      "artist_name": "Demo Artist C"
+    }
+  ],
+  "TOPIC": [
+    {
+      "topic_id": 1,
+      "topic_name": "Study"
+    },
+    {
+      "topic_id": 2,
+      "topic_name": "Life"
+    },
+    {
+      "topic_id": 3,
+      "topic_name": "SQL"
+    },
+    {
+      "topic_id": 4,
+      "topic_name": "Music"
+    },
+    {
+      "topic_id": 5,
+      "topic_name": "Unused"
+    }
+  ],
+  "VIDEO": [
+    {
+      "caption": "CityU campus walk",
+      "music_id": 1,
+      "video_id": 1,
+      "media_url": "https://example.invalid/video/1.mp4",
+      "creator_id": 1,
+      "published_at": "2026-11-02T09:00:00+00:00",
+      "duration_seconds": 25.5,
+      "visibility_status": "PUBLISHED"
+    },
+    {
+      "caption": "Coffee in Hong Kong",
+      "music_id": 2,
+      "video_id": 2,
+      "media_url": "https://example.invalid/video/2.mp4",
+      "creator_id": 2,
+      "published_at": "2026-11-02T10:00:00+00:00",
+      "duration_seconds": 18,
+      "visibility_status": "PUBLISHED"
+    },
+    {
+      "caption": "SQL joins explained",
+      "music_id": null,
+      "video_id": 3,
+      "media_url": "https://example.invalid/video/3.mp4",
+      "creator_id": 1,
+      "published_at": "2026-11-03T09:00:00+00:00",
+      "duration_seconds": 55.125,
+      "visibility_status": "PUBLISHED"
+    },
+    {
+      "caption": "Hidden rehearsal",
+      "music_id": 3,
+      "video_id": 4,
+      "media_url": "https://example.invalid/video/4.mp4",
+      "creator_id": 3,
+      "published_at": "2026-11-03T10:00:00+00:00",
+      "duration_seconds": 30,
+      "visibility_status": "HIDDEN"
+    },
+    {
+      "caption": "Study desk setup",
+      "music_id": null,
+      "video_id": 5,
+      "media_url": "https://example.invalid/video/5.mp4",
+      "creator_id": 3,
+      "published_at": "2026-11-04T09:00:00+00:00",
+      "duration_seconds": 12.5,
+      "visibility_status": "PUBLISHED"
+    },
+    {
+      "caption": "Harbour sunset",
+      "music_id": 1,
+      "video_id": 6,
+      "media_url": "https://example.invalid/video/6.mp4",
+      "creator_id": 4,
+      "published_at": "2026-11-04T10:00:00+00:00",
+      "duration_seconds": 40,
+      "visibility_status": "PUBLISHED"
+    },
+    {
+      "caption": "An empty interaction example",
+      "music_id": null,
+      "video_id": 7,
+      "media_url": "https://example.invalid/video/7.mp4",
+      "creator_id": 2,
+      "published_at": "2026-11-05T09:00:00+00:00",
+      "duration_seconds": 10,
+      "visibility_status": "PUBLISHED"
+    },
+    {
+      "caption": "",
+      "music_id": null,
+      "video_id": 8,
+      "media_url": "https://example.invalid/video/8.mp4",
+      "creator_id": 4,
+      "published_at": "2026-11-05T10:00:00+00:00",
+      "duration_seconds": 5.25,
+      "visibility_status": "PUBLISHED"
+    },
+    {
+      "caption": "Concurrency verification 0",
+      "music_id": null,
+      "video_id": 11,
+      "media_url": "/media/demo.webm",
+      "creator_id": 1,
+      "published_at": "2026-11-12T05:49:44.241+00:00",
+      "duration_seconds": 3,
+      "visibility_status": "HIDDEN"
+    },
+    {
+      "caption": "Concurrency verification 1",
+      "music_id": null,
+      "video_id": 12,
+      "media_url": "/media/demo.webm",
+      "creator_id": 1,
+      "published_at": "2026-11-12T05:49:44.241+00:00",
+      "duration_seconds": 3,
+      "visibility_status": "HIDDEN"
+    },
+    {
+      "caption": "Concurrency verification 0",
+      "music_id": null,
+      "video_id": 13,
+      "media_url": "/media/demo.webm",
+      "creator_id": 1,
+      "published_at": "2026-11-12T05:49:51.071+00:00",
+      "duration_seconds": 3,
+      "visibility_status": "HIDDEN"
+    },
+    {
+      "caption": "Concurrency verification 1",
+      "music_id": null,
+      "video_id": 14,
+      "media_url": "/media/demo.webm",
+      "creator_id": 1,
+      "published_at": "2026-11-12T05:49:51.071+00:00",
+      "duration_seconds": 3,
+      "visibility_status": "HIDDEN"
+    },
+    {
+      "caption": "Concurrency verification 0",
+      "music_id": null,
+      "video_id": 17,
+      "media_url": "/media/demo.webm",
+      "creator_id": 1,
+      "published_at": "2026-11-12T05:51:19.753+00:00",
+      "duration_seconds": 3,
+      "visibility_status": "HIDDEN"
+    },
+    {
+      "caption": "Concurrency verification 1",
+      "music_id": null,
+      "video_id": 18,
+      "media_url": "/media/demo.webm",
+      "creator_id": 1,
+      "published_at": "2026-11-12T05:51:19.753+00:00",
+      "duration_seconds": 3,
+      "visibility_status": "HIDDEN"
+    },
+    {
+      "caption": "Concurrency verification 0",
+      "music_id": null,
+      "video_id": 19,
+      "media_url": "/media/demo.webm",
+      "creator_id": 1,
+      "published_at": "2026-11-12T05:51:25.593+00:00",
+      "duration_seconds": 3,
+      "visibility_status": "HIDDEN"
+    },
+    {
+      "caption": "Concurrency verification 1",
+      "music_id": null,
+      "video_id": 20,
+      "media_url": "/media/demo.webm",
+      "creator_id": 1,
+      "published_at": "2026-11-12T05:51:25.593+00:00",
+      "duration_seconds": 3,
+      "visibility_status": "HIDDEN"
+    },
+    {
+      "caption": "Final demo · Relational data in motion",
+      "music_id": null,
+      "video_id": 21,
+      "media_url": "/media/demo.webm",
+      "creator_id": 1,
+      "published_at": "2026-11-12T05:53:51.711+00:00",
+      "duration_seconds": 3,
+      "visibility_status": "PUBLISHED"
+    },
+    {
+      "caption": "Final demo · Relational data in motion",
+      "music_id": null,
+      "video_id": 22,
+      "media_url": "/media/demo.webm",
+      "creator_id": 1,
+      "published_at": "2026-11-12T05:57:37.68+00:00",
+      "duration_seconds": 3,
+      "visibility_status": "PUBLISHED"
+    },
+    {
+      "caption": "Final demo · Relational data in motion 1794463240774",
+      "music_id": null,
+      "video_id": 23,
+      "media_url": "/media/demo.webm",
+      "creator_id": 1,
+      "published_at": "2026-11-12T06:00:50.316+00:00",
+      "duration_seconds": 3,
+      "visibility_status": "PUBLISHED"
+    }
+  ],
+  "FOLLOW": [
+    {
+      "followed_at": "2026-11-06T14:00:00+00:00",
+      "followed_id": 2,
+      "follower_id": 1
+    },
+    {
+      "followed_at": "2026-11-06T14:02:00+00:00",
+      "followed_id": 3,
+      "follower_id": 1
+    },
+    {
+      "followed_at": "2026-11-06T14:01:00+00:00",
+      "followed_id": 1,
+      "follower_id": 2
+    },
+    {
+      "followed_at": "2026-11-06T14:04:00+00:00",
+      "followed_id": 3,
+      "follower_id": 2
+    },
+    {
+      "followed_at": "2026-11-06T14:03:00+00:00",
+      "followed_id": 1,
+      "follower_id": 3
+    },
+    {
+      "followed_at": "2026-11-06T14:05:00+00:00",
+      "followed_id": 1,
+      "follower_id": 4
+    },
+    {
+      "followed_at": "2026-11-06T14:06:00+00:00",
+      "followed_id": 1,
+      "follower_id": 5
+    },
+    {
+      "followed_at": "2026-11-06T14:07:00+00:00",
+      "followed_id": 2,
+      "follower_id": 5
+    }
+  ],
+  "COMMENT": [
+    {
+      "video_id": 1,
+      "author_id": 2,
+      "body_text": "Nice campus walk",
+      "comment_id": 1,
+      "created_at": "2026-11-06T09:00:00+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": null
+    },
+    {
+      "video_id": 1,
+      "author_id": 1,
+      "body_text": "Thank you",
+      "comment_id": 2,
+      "created_at": "2026-11-06T09:01:00+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": 1
+    },
+    {
+      "video_id": 1,
+      "author_id": 3,
+      "body_text": "Where is this?",
+      "comment_id": 3,
+      "created_at": "2026-11-06T09:02:00+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": 2
+    },
+    {
+      "video_id": 1,
+      "author_id": 4,
+      "body_text": "A hidden reply",
+      "comment_id": 4,
+      "created_at": "2026-11-06T09:03:00+00:00",
+      "comment_status": "HIDDEN",
+      "parent_comment_id": 1
+    },
+    {
+      "video_id": 1,
+      "author_id": 5,
+      "body_text": "A visible reply to a hidden anchor",
+      "comment_id": 5,
+      "created_at": "2026-11-06T09:04:00+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": 4
+    },
+    {
+      "video_id": 2,
+      "author_id": 1,
+      "body_text": "Which cafe?",
+      "comment_id": 6,
+      "created_at": "2026-11-06T10:00:00+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": null
+    },
+    {
+      "video_id": 3,
+      "author_id": 2,
+      "body_text": "Useful SQL example",
+      "comment_id": 7,
+      "created_at": "2026-11-06T11:00:00+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": null
+    },
+    {
+      "video_id": 4,
+      "author_id": 1,
+      "body_text": "Retained after video hiding",
+      "comment_id": 8,
+      "created_at": "2026-11-06T12:00:00+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": null
+    },
+    {
+      "video_id": 3,
+      "author_id": 1,
+      "body_text": "More examples next time",
+      "comment_id": 9,
+      "created_at": "2026-11-06T11:01:00+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": 7
+    },
+    {
+      "video_id": 11,
+      "author_id": 1,
+      "body_text": "Committed before hiding",
+      "comment_id": 15,
+      "created_at": "2026-11-12T05:49:46.343+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": null
+    },
+    {
+      "video_id": 17,
+      "author_id": 1,
+      "body_text": "Committed before hiding",
+      "comment_id": 22,
+      "created_at": "2026-11-12T05:51:21.408+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": null
+    },
+    {
+      "video_id": 21,
+      "author_id": 1,
+      "body_text": "This comment was posted through the verified prototype.",
+      "comment_id": 23,
+      "created_at": "2026-11-12T05:53:56.362+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": null
+    },
+    {
+      "video_id": 22,
+      "author_id": 1,
+      "body_text": "This comment was posted through the verified prototype.",
+      "comment_id": 24,
+      "created_at": "2026-11-12T05:57:41.874+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": null
+    },
+    {
+      "video_id": 23,
+      "author_id": 1,
+      "body_text": "This comment was posted through the verified prototype.",
+      "comment_id": 25,
+      "created_at": "2026-11-12T06:00:55.01+00:00",
+      "comment_status": "VISIBLE",
+      "parent_comment_id": null
+    }
+  ],
+  "COLLECTION": [
+    {
+      "owner_id": 1,
+      "created_at": "2026-11-06T15:00:00+00:00",
+      "collection_id": 1,
+      "collection_name": "Study"
+    },
+    {
+      "owner_id": 1,
+      "created_at": "2026-11-06T15:01:00+00:00",
+      "collection_id": 2,
+      "collection_name": "Favorites"
+    },
+    {
+      "owner_id": 2,
+      "created_at": "2026-11-06T15:02:00+00:00",
+      "collection_id": 3,
+      "collection_name": "Study"
+    },
+    {
+      "owner_id": 5,
+      "created_at": "2026-11-06T15:03:00+00:00",
+      "collection_id": 4,
+      "collection_name": "Empty"
+    },
+    {
+      "owner_id": 1,
+      "created_at": "2026-11-12T05:49:44.241+00:00",
+      "collection_id": 5,
+      "collection_name": "Concurrency verification 1794462584687498000"
+    },
+    {
+      "owner_id": 1,
+      "created_at": "2026-11-12T05:49:51.071+00:00",
+      "collection_id": 6,
+      "collection_name": "Concurrency verification 1794462591504306000"
+    },
+    {
+      "owner_id": 1,
+      "created_at": "2026-11-12T05:51:19.753+00:00",
+      "collection_id": 8,
+      "collection_name": "Concurrency verification 1794462680123695000"
+    },
+    {
+      "owner_id": 1,
+      "created_at": "2026-11-12T05:51:25.593+00:00",
+      "collection_id": 9,
+      "collection_name": "Concurrency verification 1794462685929304000"
+    },
+    {
+      "owner_id": 1,
+      "created_at": "2026-11-12T05:54:03.967+00:00",
+      "collection_id": 10,
+      "collection_name": "Final demo 1794462842945"
+    },
+    {
+      "owner_id": 1,
+      "created_at": "2026-11-12T05:57:48.995+00:00",
+      "collection_id": 11,
+      "collection_name": "Final demo 1794463067983"
+    },
+    {
+      "owner_id": 1,
+      "created_at": "2026-11-12T06:01:02.65+00:00",
+      "collection_id": 12,
+      "collection_name": "Final demo 1794463240774"
+    }
+  ],
+  "VIDEO_LIKE": [
+    {
+      "user_id": 1,
+      "liked_at": "2026-11-06T13:00:00+00:00",
+      "video_id": 1
+    },
+    {
+      "user_id": 1,
+      "liked_at": "2026-11-06T13:03:00+00:00",
+      "video_id": 2
+    },
+    {
+      "user_id": 1,
+      "liked_at": "2026-11-06T13:08:00+00:00",
+      "video_id": 4
+    },
+    {
+      "user_id": 1,
+      "liked_at": "2026-11-06T13:11:00+00:00",
+      "video_id": 8
+    },
+    {
+      "user_id": 1,
+      "liked_at": "2026-11-12T05:53:59.289+00:00",
+      "video_id": 21
+    },
+    {
+      "user_id": 1,
+      "liked_at": "2026-11-12T05:57:44.779+00:00",
+      "video_id": 22
+    },
+    {
+      "user_id": 1,
+      "liked_at": "2026-11-12T06:00:57.941+00:00",
+      "video_id": 23
+    },
+    {
+      "user_id": 2,
+      "liked_at": "2026-11-06T13:01:00+00:00",
+      "video_id": 1
+    },
+    {
+      "user_id": 2,
+      "liked_at": "2026-11-06T13:05:00+00:00",
+      "video_id": 3
+    },
+    {
+      "user_id": 2,
+      "liked_at": "2026-11-06T13:09:00+00:00",
+      "video_id": 4
+    },
+    {
+      "user_id": 3,
+      "liked_at": "2026-11-06T13:02:00+00:00",
+      "video_id": 1
+    },
+    {
+      "user_id": 4,
+      "liked_at": "2026-11-06T13:04:00+00:00",
+      "video_id": 2
+    },
+    {
+      "user_id": 4,
+      "liked_at": "2026-11-06T13:06:00+00:00",
+      "video_id": 3
+    },
+    {
+      "user_id": 5,
+      "liked_at": "2026-11-06T13:07:00+00:00",
+      "video_id": 3
+    },
+    {
+      "user_id": 5,
+      "liked_at": "2026-11-06T13:10:00+00:00",
+      "video_id": 6
+    }
+  ],
+  "VIDEO_TOPIC": [
+    {
+      "topic_id": 1,
+      "video_id": 1,
+      "tagged_at": "2026-11-02T09:00:01+00:00"
+    },
+    {
+      "topic_id": 2,
+      "video_id": 1,
+      "tagged_at": "2026-11-02T09:00:02+00:00"
+    },
+    {
+      "topic_id": 2,
+      "video_id": 2,
+      "tagged_at": "2026-11-02T10:00:01+00:00"
+    },
+    {
+      "topic_id": 1,
+      "video_id": 3,
+      "tagged_at": "2026-11-03T09:00:01+00:00"
+    },
+    {
+      "topic_id": 3,
+      "video_id": 3,
+      "tagged_at": "2026-11-03T09:00:02+00:00"
+    },
+    {
+      "topic_id": 4,
+      "video_id": 4,
+      "tagged_at": "2026-11-03T10:00:01+00:00"
+    },
+    {
+      "topic_id": 1,
+      "video_id": 5,
+      "tagged_at": "2026-11-04T09:00:01+00:00"
+    },
+    {
+      "topic_id": 2,
+      "video_id": 6,
+      "tagged_at": "2026-11-04T10:00:01+00:00"
+    },
+    {
+      "topic_id": 4,
+      "video_id": 6,
+      "tagged_at": "2026-11-04T10:00:02+00:00"
+    }
+  ],
+  "COLLECTION_ITEM": [
+    {
+      "item_no": 1,
+      "added_at": "2026-11-06T16:00:00+00:00",
+      "video_id": 1,
+      "collection_id": 1
+    },
+    {
+      "item_no": 2,
+      "added_at": "2026-11-06T16:01:00+00:00",
+      "video_id": 3,
+      "collection_id": 1
+    },
+    {
+      "item_no": 1,
+      "added_at": "2026-11-06T16:02:00+00:00",
+      "video_id": 1,
+      "collection_id": 2
+    },
+    {
+      "item_no": 2,
+      "added_at": "2026-11-06T16:03:00+00:00",
+      "video_id": 4,
+      "collection_id": 2
+    },
+    {
+      "item_no": 1,
+      "added_at": "2026-11-06T16:04:00+00:00",
+      "video_id": 2,
+      "collection_id": 3
+    },
+    {
+      "item_no": 1,
+      "added_at": "2026-11-12T05:51:27.194+00:00",
+      "video_id": 20,
+      "collection_id": 9
+    },
+    {
+      "item_no": 2,
+      "added_at": "2026-11-12T05:51:27.195+00:00",
+      "video_id": 19,
+      "collection_id": 9
+    },
+    {
+      "item_no": 1,
+      "added_at": "2026-11-12T05:54:08.161+00:00",
+      "video_id": 21,
+      "collection_id": 10
+    },
+    {
+      "item_no": 2,
+      "added_at": "2026-11-12T05:57:50.309+00:00",
+      "video_id": 22,
+      "collection_id": 10
+    },
+    {
+      "item_no": 1,
+      "added_at": "2026-11-12T06:01:06.827+00:00",
+      "video_id": 23,
+      "collection_id": 12
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "checks": [
+    "Database-authenticated browser login",
+    "Bundled original demo media loads",
+    "Actor substitution rejected over HTTP",
+    "Cross-owner mutation rejected over HTTP",
+    "Hidden-video interaction rejected over HTTP",
+    "CSRF token enforced",
+    "Publish form creates a database video",
+    "Comment form persists and re-reads a comment",
+    "Like action persists and updates the visible state",
+    "Collection form persists a collection",
+    "Collection item saved with allocated number",
+    "Report UI executes the live SELECT whitelist",
+    "390px layout has no horizontal overflow",
+    "No browser JavaScript exceptions"
+  ],
+  "created_video_id": 23,
+  "created_collection_id": 12,
+  "retention": "New demonstration records retained; no pre-existing records deleted."
+}

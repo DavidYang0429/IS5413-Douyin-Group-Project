@@ -1,0 +1,14 @@
+{
+  "fresh_schema_reconstruction": {
+    "users": 6,
+    "tables": 10,
+    "videos": 19,
+    "columns": 43,
+    "functions": 5
+  },
+  "after_rollback": {
+    "rehearsal_schema_remains": false,
+    "original_tables": 10
+  },
+  "scope": "Created the ten-table snapshot and all five business/report functions in a separate schema inside one rollback-only transaction. No original table or data was replaced."
+}

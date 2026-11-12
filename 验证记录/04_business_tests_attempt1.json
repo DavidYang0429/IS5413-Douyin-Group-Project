@@ -1,0 +1,7 @@
+{
+  "tests_run": 21,
+  "failures": 0,
+  "errors": 2,
+  "passed": false,
+  "scope": "Actual PostgreSQL login roles, transaction rollback probes and two-session concurrency. Concurrency fixtures retained; no historical data deleted."
+}

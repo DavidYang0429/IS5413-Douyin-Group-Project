@@ -1,0 +1,1594 @@
+{
+  "captured_at_utc": "2026-11-12 06:02:54 UTC",
+  "structural_tests": [
+    {
+      "test": "duplicate_phone",
+      "actual": "23505",
+      "passed": true,
+      "expected": "23505",
+      "constraint": "uq_user_phone"
+    },
+    {
+      "test": "blank_phone",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_user_phone"
+    },
+    {
+      "test": "non_ascii_phone",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_user_phone"
+    },
+    {
+      "test": "invalid_account_status",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_user_status"
+    },
+    {
+      "test": "negative_identity",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_user_id"
+    },
+    {
+      "test": "duplicate_topic",
+      "actual": "23505",
+      "passed": true,
+      "expected": "23505",
+      "constraint": "uq_topic_name"
+    },
+    {
+      "test": "blank_topic",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_topic_name"
+    },
+    {
+      "test": "padded_topic",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_topic_name"
+    },
+    {
+      "test": "zero_duration",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_video_duration"
+    },
+    {
+      "test": "orphan_creator",
+      "actual": "23503",
+      "passed": true,
+      "expected": "23503",
+      "constraint": "fk_video_creator"
+    },
+    {
+      "test": "invalid_video_status",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_video_status"
+    },
+    {
+      "test": "null_video_url",
+      "actual": "23502",
+      "passed": true,
+      "expected": "23502",
+      "constraint": ""
+    },
+    {
+      "test": "orphan_parent_comment",
+      "actual": "23503",
+      "passed": true,
+      "expected": "23503",
+      "constraint": ""
+    },
+    {
+      "test": "blank_comment",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_comment_body"
+    },
+    {
+      "test": "null_comment_body",
+      "actual": "23502",
+      "passed": true,
+      "expected": "23502",
+      "constraint": ""
+    },
+    {
+      "test": "invalid_comment_status",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_comment_status"
+    },
+    {
+      "test": "duplicate_video_topic",
+      "actual": "23505",
+      "passed": true,
+      "expected": "23505",
+      "constraint": "VIDEO_TOPIC_pkey"
+    },
+    {
+      "test": "duplicate_like",
+      "actual": "23505",
+      "passed": true,
+      "expected": "23505",
+      "constraint": "VIDEO_LIKE_pkey"
+    },
+    {
+      "test": "orphan_like_video",
+      "actual": "23503",
+      "passed": true,
+      "expected": "23503",
+      "constraint": ""
+    },
+    {
+      "test": "duplicate_follow",
+      "actual": "23505",
+      "passed": true,
+      "expected": "23505",
+      "constraint": "FOLLOW_pkey"
+    },
+    {
+      "test": "self_follow",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_follow_not_self"
+    },
+    {
+      "test": "duplicate_collection_name_for_owner",
+      "actual": "23505",
+      "passed": true,
+      "expected": "23505",
+      "constraint": "uq_collection_owner_name"
+    },
+    {
+      "test": "blank_collection_name",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_collection_name"
+    },
+    {
+      "test": "duplicate_video_within_collection",
+      "actual": "23505",
+      "passed": true,
+      "expected": "23505",
+      "constraint": "uq_collection_item_video"
+    },
+    {
+      "test": "zero_local_item_number",
+      "actual": "23514",
+      "passed": true,
+      "expected": "23514",
+      "constraint": "ck_collection_item_number"
+    },
+    {
+      "test": "non_unique_nickname_allowed",
+      "actual": "ACCEPT",
+      "passed": true,
+      "expected": "ACCEPT",
+      "constraint": ""
+    },
+    {
+      "test": "no_music_and_empty_caption_allowed",
+      "actual": "ACCEPT",
+      "passed": true,
+      "expected": "ACCEPT",
+      "constraint": ""
+    },
+    {
+      "test": "case_distinct_topic_allowed",
+      "actual": "ACCEPT",
+      "passed": true,
+      "expected": "ACCEPT",
+      "constraint": ""
+    },
+    {
+      "test": "same_collection_name_different_owner_allowed",
+      "actual": "ACCEPT",
+      "passed": true,
+      "expected": "ACCEPT",
+      "constraint": ""
+    },
+    {
+      "test": "self_like_allowed",
+      "actual": "ACCEPT",
+      "passed": true,
+      "expected": "ACCEPT",
+      "constraint": ""
+    },
+    {
+      "test": "same_video_in_different_collection_allowed",
+      "actual": "ACCEPT",
+      "passed": true,
+      "expected": "ACCEPT",
+      "constraint": ""
+    }
+  ],
+  "immutability_tests": [
+    {
+      "test": "self_parent",
+      "passed": true,
+      "sqlstate": "23514"
+    },
+    {
+      "test": "immutable_comment_ancestry",
+      "passed": true,
+      "sqlstate": "23514"
+    },
+    {
+      "test": "immutable_video_creator",
+      "passed": true,
+      "sqlstate": "23514"
+    },
+    {
+      "test": "immutable_collection_owner",
+      "passed": true,
+      "sqlstate": "23514"
+    }
+  ],
+  "explain": [
+    {
+      "Plan": {
+        "Node Type": "Sort",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 11.74,
+        "Total Cost": 11.74,
+        "Plan Rows": 1,
+        "Plan Width": 532,
+        "Actual Startup Time": 0.135,
+        "Actual Total Time": 0.137,
+        "Actual Rows": 16,
+        "Actual Loops": 1,
+        "Sort Key": [
+          "v.video_id"
+        ],
+        "Sort Method": "quicksort",
+        "Sort Space Used": 25,
+        "Sort Space Type": "Memory",
+        "Shared Hit Blocks": 30,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Plans": [
+          {
+            "Node Type": "Aggregate",
+            "Strategy": "Hashed",
+            "Partial Mode": "Simple",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 11.72,
+            "Total Cost": 11.73,
+            "Plan Rows": 1,
+            "Plan Width": 532,
+            "Actual Startup Time": 0.095,
+            "Actual Total Time": 0.099,
+            "Actual Rows": 16,
+            "Actual Loops": 1,
+            "Group Key": [
+              "v.video_id"
+            ],
+            "Planned Partitions": 0,
+            "HashAgg Batches": 1,
+            "Peak Memory Usage": 24,
+            "Disk Usage": 0,
+            "Shared Hit Blocks": 27,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Nested Loop",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Join Type": "Left",
+                "Startup Cost": 1.46,
+                "Total Cost": 11.61,
+                "Plan Rows": 22,
+                "Plan Width": 532,
+                "Actual Startup Time": 0.035,
+                "Actual Total Time": 0.078,
+                "Actual Rows": 21,
+                "Actual Loops": 1,
+                "Inner Unique": false,
+                "Shared Hit Blocks": 27,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0,
+                "Plans": [
+                  {
+                    "Node Type": "Index Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Scan Direction": "Forward",
+                    "Index Name": "ix_video_creator_visibility_time",
+                    "Relation Name": "VIDEO",
+                    "Alias": "v",
+                    "Startup Cost": 0.14,
+                    "Total Cost": 3.98,
+                    "Plan Rows": 1,
+                    "Plan Width": 524,
+                    "Actual Startup Time": 0.013,
+                    "Actual Total Time": 0.018,
+                    "Actual Rows": 16,
+                    "Actual Loops": 1,
+                    "Index Cond": "((visibility_status)::text = 'PUBLISHED'::text)",
+                    "Rows Removed by Index Recheck": 0,
+                    "Shared Hit Blocks": 2,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0
+                  },
+                  {
+                    "Node Type": "Bitmap Heap Scan",
+                    "Parent Relationship": "Inner",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Relation Name": "VIDEO_LIKE",
+                    "Alias": "l",
+                    "Startup Cost": 1.31,
+                    "Total Cost": 7.55,
+                    "Plan Rows": 8,
+                    "Plan Width": 16,
+                    "Actual Startup Time": 0.002,
+                    "Actual Total Time": 0.003,
+                    "Actual Rows": 1,
+                    "Actual Loops": 16,
+                    "Recheck Cond": "(video_id = v.video_id)",
+                    "Rows Removed by Index Recheck": 0,
+                    "Exact Heap Blocks": 9,
+                    "Lossy Heap Blocks": 0,
+                    "Shared Hit Blocks": 25,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0,
+                    "Plans": [
+                      {
+                        "Node Type": "Bitmap Index Scan",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Async Capable": false,
+                        "Index Name": "ix_video_like_video",
+                        "Startup Cost": 0,
+                        "Total Cost": 1.31,
+                        "Plan Rows": 8,
+                        "Plan Width": 0,
+                        "Actual Startup Time": 0.001,
+                        "Actual Total Time": 0.001,
+                        "Actual Rows": 1,
+                        "Actual Loops": 16,
+                        "Index Cond": "(video_id = v.video_id)",
+                        "Shared Hit Blocks": 16,
+                        "Shared Read Blocks": 0,
+                        "Shared Dirtied Blocks": 0,
+                        "Shared Written Blocks": 0,
+                        "Local Hit Blocks": 0,
+                        "Local Read Blocks": 0,
+                        "Local Dirtied Blocks": 0,
+                        "Local Written Blocks": 0,
+                        "Temp Read Blocks": 0,
+                        "Temp Written Blocks": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "Planning": {
+        "Shared Hit Blocks": 181,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0
+      },
+      "Planning Time": 0.638,
+      "Triggers": [],
+      "Execution Time": 0.269
+    }
+  ],
+  "catalog": {
+    "roles": [
+      {
+        "role": "anon",
+        "user_insert": false,
+        "user_select": false,
+        "schema_usage": false
+      },
+      {
+        "role": "authenticated",
+        "user_insert": false,
+        "user_select": false,
+        "schema_usage": false
+      },
+      {
+        "role": "service_role",
+        "user_insert": false,
+        "user_select": false,
+        "schema_usage": false
+      }
+    ],
+    "tables": [
+      {
+        "rls": true,
+        "table": "COLLECTION"
+      },
+      {
+        "rls": true,
+        "table": "COLLECTION_ITEM"
+      },
+      {
+        "rls": true,
+        "table": "COMMENT"
+      },
+      {
+        "rls": true,
+        "table": "FOLLOW"
+      },
+      {
+        "rls": true,
+        "table": "MUSIC"
+      },
+      {
+        "rls": true,
+        "table": "TOPIC"
+      },
+      {
+        "rls": true,
+        "table": "USER"
+      },
+      {
+        "rls": true,
+        "table": "VIDEO"
+      },
+      {
+        "rls": true,
+        "table": "VIDEO_LIKE"
+      },
+      {
+        "rls": true,
+        "table": "VIDEO_TOPIC"
+      }
+    ],
+    "columns": [
+      {
+        "type": "bigint",
+        "table": "COLLECTION",
+        "column": "collection_id",
+        "identity": "YES",
+        "nullable": "NO",
+        "position": 1,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "COLLECTION",
+        "column": "owner_id",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 2,
+        "collation": null
+      },
+      {
+        "type": "character varying",
+        "table": "COLLECTION",
+        "column": "collection_name",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 3,
+        "collation": "C"
+      },
+      {
+        "type": "timestamp with time zone",
+        "table": "COLLECTION",
+        "column": "created_at",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 4,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "COLLECTION_ITEM",
+        "column": "collection_id",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 1,
+        "collation": null
+      },
+      {
+        "type": "integer",
+        "table": "COLLECTION_ITEM",
+        "column": "item_no",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 2,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "COLLECTION_ITEM",
+        "column": "video_id",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 3,
+        "collation": null
+      },
+      {
+        "type": "timestamp with time zone",
+        "table": "COLLECTION_ITEM",
+        "column": "added_at",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 4,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "COMMENT",
+        "column": "comment_id",
+        "identity": "YES",
+        "nullable": "NO",
+        "position": 1,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "COMMENT",
+        "column": "video_id",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 2,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "COMMENT",
+        "column": "author_id",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 3,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "COMMENT",
+        "column": "parent_comment_id",
+        "identity": "NO",
+        "nullable": "YES",
+        "position": 4,
+        "collation": null
+      },
+      {
+        "type": "text",
+        "table": "COMMENT",
+        "column": "body_text",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 5,
+        "collation": null
+      },
+      {
+        "type": "character varying",
+        "table": "COMMENT",
+        "column": "comment_status",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 6,
+        "collation": "C"
+      },
+      {
+        "type": "timestamp with time zone",
+        "table": "COMMENT",
+        "column": "created_at",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 7,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "FOLLOW",
+        "column": "follower_id",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 1,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "FOLLOW",
+        "column": "followed_id",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 2,
+        "collation": null
+      },
+      {
+        "type": "timestamp with time zone",
+        "table": "FOLLOW",
+        "column": "followed_at",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 3,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "MUSIC",
+        "column": "music_id",
+        "identity": "YES",
+        "nullable": "NO",
+        "position": 1,
+        "collation": null
+      },
+      {
+        "type": "character varying",
+        "table": "MUSIC",
+        "column": "title",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 2,
+        "collation": null
+      },
+      {
+        "type": "character varying",
+        "table": "MUSIC",
+        "column": "artist_name",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 3,
+        "collation": null
+      },
+      {
+        "type": "character varying",
+        "table": "MUSIC",
+        "column": "audio_url",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 4,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "TOPIC",
+        "column": "topic_id",
+        "identity": "YES",
+        "nullable": "NO",
+        "position": 1,
+        "collation": null
+      },
+      {
+        "type": "character varying",
+        "table": "TOPIC",
+        "column": "topic_name",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 2,
+        "collation": "C"
+      },
+      {
+        "type": "bigint",
+        "table": "USER",
+        "column": "user_id",
+        "identity": "YES",
+        "nullable": "NO",
+        "position": 1,
+        "collation": null
+      },
+      {
+        "type": "character varying",
+        "table": "USER",
+        "column": "phone",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 2,
+        "collation": "C"
+      },
+      {
+        "type": "character varying",
+        "table": "USER",
+        "column": "nickname",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 3,
+        "collation": null
+      },
+      {
+        "type": "character varying",
+        "table": "USER",
+        "column": "account_status",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 4,
+        "collation": "C"
+      },
+      {
+        "type": "timestamp with time zone",
+        "table": "USER",
+        "column": "registered_at",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 5,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "VIDEO",
+        "column": "video_id",
+        "identity": "YES",
+        "nullable": "NO",
+        "position": 1,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "VIDEO",
+        "column": "creator_id",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 2,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "VIDEO",
+        "column": "music_id",
+        "identity": "NO",
+        "nullable": "YES",
+        "position": 3,
+        "collation": null
+      },
+      {
+        "type": "character varying",
+        "table": "VIDEO",
+        "column": "caption",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 4,
+        "collation": null
+      },
+      {
+        "type": "character varying",
+        "table": "VIDEO",
+        "column": "media_url",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 5,
+        "collation": null
+      },
+      {
+        "type": "numeric",
+        "table": "VIDEO",
+        "column": "duration_seconds",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 6,
+        "collation": null
+      },
+      {
+        "type": "character varying",
+        "table": "VIDEO",
+        "column": "visibility_status",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 7,
+        "collation": "C"
+      },
+      {
+        "type": "timestamp with time zone",
+        "table": "VIDEO",
+        "column": "published_at",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 8,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "VIDEO_LIKE",
+        "column": "user_id",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 1,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "VIDEO_LIKE",
+        "column": "video_id",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 2,
+        "collation": null
+      },
+      {
+        "type": "timestamp with time zone",
+        "table": "VIDEO_LIKE",
+        "column": "liked_at",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 3,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "VIDEO_TOPIC",
+        "column": "video_id",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 1,
+        "collation": null
+      },
+      {
+        "type": "bigint",
+        "table": "VIDEO_TOPIC",
+        "column": "topic_id",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 2,
+        "collation": null
+      },
+      {
+        "type": "timestamp with time zone",
+        "table": "VIDEO_TOPIC",
+        "column": "tagged_at",
+        "identity": "NO",
+        "nullable": "NO",
+        "position": 3,
+        "collation": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "COLLECTION_pkey",
+        "table": "COLLECTION",
+        "definition": "CREATE UNIQUE INDEX \"COLLECTION_pkey\" ON douyin.\"COLLECTION\" USING btree (collection_id)"
+      },
+      {
+        "name": "uq_collection_owner_name",
+        "table": "COLLECTION",
+        "definition": "CREATE UNIQUE INDEX uq_collection_owner_name ON douyin.\"COLLECTION\" USING btree (owner_id, collection_name)"
+      },
+      {
+        "name": "COLLECTION_ITEM_pkey",
+        "table": "COLLECTION_ITEM",
+        "definition": "CREATE UNIQUE INDEX \"COLLECTION_ITEM_pkey\" ON douyin.\"COLLECTION_ITEM\" USING btree (collection_id, item_no)"
+      },
+      {
+        "name": "ix_collection_item_video",
+        "table": "COLLECTION_ITEM",
+        "definition": "CREATE INDEX ix_collection_item_video ON douyin.\"COLLECTION_ITEM\" USING btree (video_id, collection_id)"
+      },
+      {
+        "name": "uq_collection_item_video",
+        "table": "COLLECTION_ITEM",
+        "definition": "CREATE UNIQUE INDEX uq_collection_item_video ON douyin.\"COLLECTION_ITEM\" USING btree (collection_id, video_id)"
+      },
+      {
+        "name": "COMMENT_pkey",
+        "table": "COMMENT",
+        "definition": "CREATE UNIQUE INDEX \"COMMENT_pkey\" ON douyin.\"COMMENT\" USING btree (comment_id)"
+      },
+      {
+        "name": "ix_comment_author",
+        "table": "COMMENT",
+        "definition": "CREATE INDEX ix_comment_author ON douyin.\"COMMENT\" USING btree (author_id)"
+      },
+      {
+        "name": "ix_comment_parent",
+        "table": "COMMENT",
+        "definition": "CREATE INDEX ix_comment_parent ON douyin.\"COMMENT\" USING btree (parent_comment_id)"
+      },
+      {
+        "name": "ix_comment_video_status_time",
+        "table": "COMMENT",
+        "definition": "CREATE INDEX ix_comment_video_status_time ON douyin.\"COMMENT\" USING btree (video_id, comment_status, created_at)"
+      },
+      {
+        "name": "FOLLOW_pkey",
+        "table": "FOLLOW",
+        "definition": "CREATE UNIQUE INDEX \"FOLLOW_pkey\" ON douyin.\"FOLLOW\" USING btree (follower_id, followed_id)"
+      },
+      {
+        "name": "ix_follow_followed",
+        "table": "FOLLOW",
+        "definition": "CREATE INDEX ix_follow_followed ON douyin.\"FOLLOW\" USING btree (followed_id, follower_id)"
+      },
+      {
+        "name": "MUSIC_pkey",
+        "table": "MUSIC",
+        "definition": "CREATE UNIQUE INDEX \"MUSIC_pkey\" ON douyin.\"MUSIC\" USING btree (music_id)"
+      },
+      {
+        "name": "TOPIC_pkey",
+        "table": "TOPIC",
+        "definition": "CREATE UNIQUE INDEX \"TOPIC_pkey\" ON douyin.\"TOPIC\" USING btree (topic_id)"
+      },
+      {
+        "name": "uq_topic_name",
+        "table": "TOPIC",
+        "definition": "CREATE UNIQUE INDEX uq_topic_name ON douyin.\"TOPIC\" USING btree (topic_name)"
+      },
+      {
+        "name": "USER_pkey",
+        "table": "USER",
+        "definition": "CREATE UNIQUE INDEX \"USER_pkey\" ON douyin.\"USER\" USING btree (user_id)"
+      },
+      {
+        "name": "uq_user_phone",
+        "table": "USER",
+        "definition": "CREATE UNIQUE INDEX uq_user_phone ON douyin.\"USER\" USING btree (phone)"
+      },
+      {
+        "name": "VIDEO_pkey",
+        "table": "VIDEO",
+        "definition": "CREATE UNIQUE INDEX \"VIDEO_pkey\" ON douyin.\"VIDEO\" USING btree (video_id)"
+      },
+      {
+        "name": "ix_video_creator_visibility_time",
+        "table": "VIDEO",
+        "definition": "CREATE INDEX ix_video_creator_visibility_time ON douyin.\"VIDEO\" USING btree (creator_id, visibility_status, published_at)"
+      },
+      {
+        "name": "ix_video_music",
+        "table": "VIDEO",
+        "definition": "CREATE INDEX ix_video_music ON douyin.\"VIDEO\" USING btree (music_id)"
+      },
+      {
+        "name": "VIDEO_LIKE_pkey",
+        "table": "VIDEO_LIKE",
+        "definition": "CREATE UNIQUE INDEX \"VIDEO_LIKE_pkey\" ON douyin.\"VIDEO_LIKE\" USING btree (user_id, video_id)"
+      },
+      {
+        "name": "ix_video_like_video",
+        "table": "VIDEO_LIKE",
+        "definition": "CREATE INDEX ix_video_like_video ON douyin.\"VIDEO_LIKE\" USING btree (video_id, user_id)"
+      },
+      {
+        "name": "VIDEO_TOPIC_pkey",
+        "table": "VIDEO_TOPIC",
+        "definition": "CREATE UNIQUE INDEX \"VIDEO_TOPIC_pkey\" ON douyin.\"VIDEO_TOPIC\" USING btree (video_id, topic_id)"
+      },
+      {
+        "name": "ix_video_topic_topic",
+        "table": "VIDEO_TOPIC",
+        "definition": "CREATE INDEX ix_video_topic_topic ON douyin.\"VIDEO_TOPIC\" USING btree (topic_id, video_id)"
+      }
+    ],
+    "database": "postgres",
+    "row_counts": {
+      "USER": 6,
+      "MUSIC": 3,
+      "TOPIC": 5,
+      "VIDEO": 19,
+      "FOLLOW": 8,
+      "COMMENT": 14,
+      "COLLECTION": 11,
+      "VIDEO_LIKE": 15,
+      "VIDEO_TOPIC": 9,
+      "COLLECTION_ITEM": 10
+    },
+    "constraints": [
+      {
+        "name": "COLLECTION_pkey",
+        "type": "p",
+        "table": "COLLECTION",
+        "columns": [
+          "collection_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "PRIMARY KEY (collection_id)",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_collection_id",
+        "type": "c",
+        "table": "COLLECTION",
+        "columns": [
+          "collection_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK ((collection_id > 0))",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_collection_name",
+        "type": "c",
+        "table": "COLLECTION",
+        "columns": [
+          "collection_name"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK (((char_length(TRIM(BOTH FROM collection_name)) > 0) AND (octet_length((collection_name)::text) = octet_length(TRIM(BOTH FROM collection_name)))))",
+        "ref_columns": null
+      },
+      {
+        "name": "fk_collection_owner",
+        "type": "f",
+        "table": "COLLECTION",
+        "columns": [
+          "owner_id"
+        ],
+        "ref_table": "USER",
+        "validated": true,
+        "definition": "FOREIGN KEY (owner_id) REFERENCES douyin.\"USER\"(user_id)",
+        "ref_columns": [
+          "user_id"
+        ]
+      },
+      {
+        "name": "uq_collection_owner_name",
+        "type": "u",
+        "table": "COLLECTION",
+        "columns": [
+          "owner_id",
+          "collection_name"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "UNIQUE (owner_id, collection_name)",
+        "ref_columns": null
+      },
+      {
+        "name": "COLLECTION_ITEM_pkey",
+        "type": "p",
+        "table": "COLLECTION_ITEM",
+        "columns": [
+          "collection_id",
+          "item_no"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "PRIMARY KEY (collection_id, item_no)",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_collection_item_number",
+        "type": "c",
+        "table": "COLLECTION_ITEM",
+        "columns": [
+          "item_no"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK ((item_no > 0))",
+        "ref_columns": null
+      },
+      {
+        "name": "fk_collection_item_collection",
+        "type": "f",
+        "table": "COLLECTION_ITEM",
+        "columns": [
+          "collection_id"
+        ],
+        "ref_table": "COLLECTION",
+        "validated": true,
+        "definition": "FOREIGN KEY (collection_id) REFERENCES douyin.\"COLLECTION\"(collection_id)",
+        "ref_columns": [
+          "collection_id"
+        ]
+      },
+      {
+        "name": "fk_collection_item_video",
+        "type": "f",
+        "table": "COLLECTION_ITEM",
+        "columns": [
+          "video_id"
+        ],
+        "ref_table": "VIDEO",
+        "validated": true,
+        "definition": "FOREIGN KEY (video_id) REFERENCES douyin.\"VIDEO\"(video_id)",
+        "ref_columns": [
+          "video_id"
+        ]
+      },
+      {
+        "name": "uq_collection_item_video",
+        "type": "u",
+        "table": "COLLECTION_ITEM",
+        "columns": [
+          "collection_id",
+          "video_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "UNIQUE (collection_id, video_id)",
+        "ref_columns": null
+      },
+      {
+        "name": "COMMENT_pkey",
+        "type": "p",
+        "table": "COMMENT",
+        "columns": [
+          "comment_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "PRIMARY KEY (comment_id)",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_comment_body",
+        "type": "c",
+        "table": "COMMENT",
+        "columns": [
+          "body_text"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK ((char_length(TRIM(BOTH FROM body_text)) > 0))",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_comment_id",
+        "type": "c",
+        "table": "COMMENT",
+        "columns": [
+          "comment_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK ((comment_id > 0))",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_comment_status",
+        "type": "c",
+        "table": "COMMENT",
+        "columns": [
+          "comment_status"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK (((comment_status)::text = ANY ((ARRAY['VISIBLE'::character varying, 'HIDDEN'::character varying])::text[])))",
+        "ref_columns": null
+      },
+      {
+        "name": "fk_comment_author",
+        "type": "f",
+        "table": "COMMENT",
+        "columns": [
+          "author_id"
+        ],
+        "ref_table": "USER",
+        "validated": true,
+        "definition": "FOREIGN KEY (author_id) REFERENCES douyin.\"USER\"(user_id)",
+        "ref_columns": [
+          "user_id"
+        ]
+      },
+      {
+        "name": "fk_comment_parent",
+        "type": "f",
+        "table": "COMMENT",
+        "columns": [
+          "parent_comment_id"
+        ],
+        "ref_table": "COMMENT",
+        "validated": true,
+        "definition": "FOREIGN KEY (parent_comment_id) REFERENCES douyin.\"COMMENT\"(comment_id)",
+        "ref_columns": [
+          "comment_id"
+        ]
+      },
+      {
+        "name": "fk_comment_video",
+        "type": "f",
+        "table": "COMMENT",
+        "columns": [
+          "video_id"
+        ],
+        "ref_table": "VIDEO",
+        "validated": true,
+        "definition": "FOREIGN KEY (video_id) REFERENCES douyin.\"VIDEO\"(video_id)",
+        "ref_columns": [
+          "video_id"
+        ]
+      },
+      {
+        "name": "FOLLOW_pkey",
+        "type": "p",
+        "table": "FOLLOW",
+        "columns": [
+          "follower_id",
+          "followed_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "PRIMARY KEY (follower_id, followed_id)",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_follow_not_self",
+        "type": "c",
+        "table": "FOLLOW",
+        "columns": [
+          "follower_id",
+          "followed_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK ((follower_id <> followed_id))",
+        "ref_columns": null
+      },
+      {
+        "name": "fk_follow_followed",
+        "type": "f",
+        "table": "FOLLOW",
+        "columns": [
+          "followed_id"
+        ],
+        "ref_table": "USER",
+        "validated": true,
+        "definition": "FOREIGN KEY (followed_id) REFERENCES douyin.\"USER\"(user_id)",
+        "ref_columns": [
+          "user_id"
+        ]
+      },
+      {
+        "name": "fk_follow_follower",
+        "type": "f",
+        "table": "FOLLOW",
+        "columns": [
+          "follower_id"
+        ],
+        "ref_table": "USER",
+        "validated": true,
+        "definition": "FOREIGN KEY (follower_id) REFERENCES douyin.\"USER\"(user_id)",
+        "ref_columns": [
+          "user_id"
+        ]
+      },
+      {
+        "name": "MUSIC_pkey",
+        "type": "p",
+        "table": "MUSIC",
+        "columns": [
+          "music_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "PRIMARY KEY (music_id)",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_music_id",
+        "type": "c",
+        "table": "MUSIC",
+        "columns": [
+          "music_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK ((music_id > 0))",
+        "ref_columns": null
+      },
+      {
+        "name": "TOPIC_pkey",
+        "type": "p",
+        "table": "TOPIC",
+        "columns": [
+          "topic_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "PRIMARY KEY (topic_id)",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_topic_id",
+        "type": "c",
+        "table": "TOPIC",
+        "columns": [
+          "topic_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK ((topic_id > 0))",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_topic_name",
+        "type": "c",
+        "table": "TOPIC",
+        "columns": [
+          "topic_name"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK (((char_length(TRIM(BOTH FROM topic_name)) > 0) AND (octet_length((topic_name)::text) = octet_length(TRIM(BOTH FROM topic_name)))))",
+        "ref_columns": null
+      },
+      {
+        "name": "uq_topic_name",
+        "type": "u",
+        "table": "TOPIC",
+        "columns": [
+          "topic_name"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "UNIQUE (topic_name)",
+        "ref_columns": null
+      },
+      {
+        "name": "USER_pkey",
+        "type": "p",
+        "table": "USER",
+        "columns": [
+          "user_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "PRIMARY KEY (user_id)",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_user_id",
+        "type": "c",
+        "table": "USER",
+        "columns": [
+          "user_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK ((user_id > 0))",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_user_phone",
+        "type": "c",
+        "table": "USER",
+        "columns": [
+          "phone"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK (((char_length(TRIM(BOTH FROM phone)) > 0) AND (octet_length((phone)::text) = octet_length(TRIM(BOTH FROM phone))) AND (octet_length((phone)::text) = char_length((phone)::text))))",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_user_status",
+        "type": "c",
+        "table": "USER",
+        "columns": [
+          "account_status"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK (((account_status)::text = ANY ((ARRAY['ACTIVE'::character varying, 'DISABLED'::character varying])::text[])))",
+        "ref_columns": null
+      },
+      {
+        "name": "uq_user_phone",
+        "type": "u",
+        "table": "USER",
+        "columns": [
+          "phone"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "UNIQUE (phone)",
+        "ref_columns": null
+      },
+      {
+        "name": "VIDEO_pkey",
+        "type": "p",
+        "table": "VIDEO",
+        "columns": [
+          "video_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "PRIMARY KEY (video_id)",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_video_duration",
+        "type": "c",
+        "table": "VIDEO",
+        "columns": [
+          "duration_seconds"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK ((duration_seconds > (0)::numeric))",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_video_id",
+        "type": "c",
+        "table": "VIDEO",
+        "columns": [
+          "video_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK ((video_id > 0))",
+        "ref_columns": null
+      },
+      {
+        "name": "ck_video_status",
+        "type": "c",
+        "table": "VIDEO",
+        "columns": [
+          "visibility_status"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "CHECK (((visibility_status)::text = ANY ((ARRAY['PUBLISHED'::character varying, 'HIDDEN'::character varying])::text[])))",
+        "ref_columns": null
+      },
+      {
+        "name": "fk_video_creator",
+        "type": "f",
+        "table": "VIDEO",
+        "columns": [
+          "creator_id"
+        ],
+        "ref_table": "USER",
+        "validated": true,
+        "definition": "FOREIGN KEY (creator_id) REFERENCES douyin.\"USER\"(user_id)",
+        "ref_columns": [
+          "user_id"
+        ]
+      },
+      {
+        "name": "fk_video_music",
+        "type": "f",
+        "table": "VIDEO",
+        "columns": [
+          "music_id"
+        ],
+        "ref_table": "MUSIC",
+        "validated": true,
+        "definition": "FOREIGN KEY (music_id) REFERENCES douyin.\"MUSIC\"(music_id)",
+        "ref_columns": [
+          "music_id"
+        ]
+      },
+      {
+        "name": "VIDEO_LIKE_pkey",
+        "type": "p",
+        "table": "VIDEO_LIKE",
+        "columns": [
+          "user_id",
+          "video_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "PRIMARY KEY (user_id, video_id)",
+        "ref_columns": null
+      },
+      {
+        "name": "fk_video_like_user",
+        "type": "f",
+        "table": "VIDEO_LIKE",
+        "columns": [
+          "user_id"
+        ],
+        "ref_table": "USER",
+        "validated": true,
+        "definition": "FOREIGN KEY (user_id) REFERENCES douyin.\"USER\"(user_id)",
+        "ref_columns": [
+          "user_id"
+        ]
+      },
+      {
+        "name": "fk_video_like_video",
+        "type": "f",
+        "table": "VIDEO_LIKE",
+        "columns": [
+          "video_id"
+        ],
+        "ref_table": "VIDEO",
+        "validated": true,
+        "definition": "FOREIGN KEY (video_id) REFERENCES douyin.\"VIDEO\"(video_id)",
+        "ref_columns": [
+          "video_id"
+        ]
+      },
+      {
+        "name": "VIDEO_TOPIC_pkey",
+        "type": "p",
+        "table": "VIDEO_TOPIC",
+        "columns": [
+          "video_id",
+          "topic_id"
+        ],
+        "ref_table": null,
+        "validated": true,
+        "definition": "PRIMARY KEY (video_id, topic_id)",
+        "ref_columns": null
+      },
+      {
+        "name": "fk_video_topic_topic",
+        "type": "f",
+        "table": "VIDEO_TOPIC",
+        "columns": [
+          "topic_id"
+        ],
+        "ref_table": "TOPIC",
+        "validated": true,
+        "definition": "FOREIGN KEY (topic_id) REFERENCES douyin.\"TOPIC\"(topic_id)",
+        "ref_columns": [
+          "topic_id"
+        ]
+      },
+      {
+        "name": "fk_video_topic_video",
+        "type": "f",
+        "table": "VIDEO_TOPIC",
+        "columns": [
+          "video_id"
+        ],
+        "ref_table": "VIDEO",
+        "validated": true,
+        "definition": "FOREIGN KEY (video_id) REFERENCES douyin.\"VIDEO\"(video_id)",
+        "ref_columns": [
+          "video_id"
+        ]
+      }
+    ],
+    "server_version": "17.11"
+  }
+}

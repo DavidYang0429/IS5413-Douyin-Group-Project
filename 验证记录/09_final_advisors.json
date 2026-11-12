@@ -1,0 +1,146 @@
+{
+  "security": {
+    "lints": [
+      {
+        "name": "rls_enabled_no_policy",
+        "title": "RLS Enabled No Policy",
+        "level": "INFO",
+        "facing": "EXTERNAL",
+        "categories": [
+          "SECURITY"
+        ],
+        "description": "Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+        "count": 10,
+        "findings": [
+          {
+            "detail": "Table \\`douyin.COLLECTION\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "COLLECTION",
+              "type": "table",
+              "schema": "douyin"
+            },
+            "observed_at": "2026-11-12T06:35:11.811Z"
+          },
+          {
+            "detail": "Table \\`douyin.COLLECTION_ITEM\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "COLLECTION_ITEM",
+              "type": "table",
+              "schema": "douyin"
+            },
+            "observed_at": "2026-11-12T06:35:11.811Z"
+          },
+          {
+            "detail": "Table \\`douyin.COMMENT\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "COMMENT",
+              "type": "table",
+              "schema": "douyin"
+            },
+            "observed_at": "2026-11-12T06:35:11.811Z"
+          },
+          {
+            "detail": "Table \\`douyin.FOLLOW\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "FOLLOW",
+              "type": "table",
+              "schema": "douyin"
+            },
+            "observed_at": "2026-11-12T06:35:11.811Z"
+          },
+          {
+            "detail": "Table \\`douyin.MUSIC\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "MUSIC",
+              "type": "table",
+              "schema": "douyin"
+            },
+            "observed_at": "2026-11-12T06:35:11.811Z"
+          },
+          {
+            "detail": "Table \\`douyin.TOPIC\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "TOPIC",
+              "type": "table",
+              "schema": "douyin"
+            },
+            "observed_at": "2026-11-12T06:35:11.811Z"
+          },
+          {
+            "detail": "Table \\`douyin.USER\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "USER",
+              "type": "table",
+              "schema": "douyin"
+            },
+            "observed_at": "2026-11-12T06:35:11.811Z"
+          },
+          {
+            "detail": "Table \\`douyin.VIDEO\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "VIDEO",
+              "type": "table",
+              "schema": "douyin"
+            },
+            "observed_at": "2026-11-12T06:35:11.811Z"
+          },
+          {
+            "detail": "Table \\`douyin.VIDEO_LIKE\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "VIDEO_LIKE",
+              "type": "table",
+              "schema": "douyin"
+            },
+            "observed_at": "2026-11-12T06:35:11.811Z"
+          },
+          {
+            "detail": "Table \\`douyin.VIDEO_TOPIC\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "VIDEO_TOPIC",
+              "type": "table",
+              "schema": "douyin"
+            },
+            "observed_at": "2026-11-12T06:35:11.811Z"
+          }
+        ]
+      }
+    ]
+  },
+  "performance": {
+    "lints": [
+      {
+        "name": "unused_index",
+        "title": "Unused Index",
+        "level": "INFO",
+        "facing": "EXTERNAL",
+        "categories": [
+          "PERFORMANCE"
+        ],
+        "description": "Detects if an index has never been used and may be a candidate for removal.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index",
+        "count": 2,
+        "findings": [
+          {
+            "detail": "Index \\`ix_video_music\\` on table \\`douyin.VIDEO\\` has not been used",
+            "metadata": {
+              "name": "VIDEO",
+              "type": "table",
+              "schema": "douyin"
+            },
+            "observed_at": "2026-11-12T06:35:11.990Z"
+          },
+          {
+            "detail": "Index \\`ix_comment_author\\` on table \\`douyin.COMMENT\\` has not been used",
+            "metadata": {
+              "name": "COMMENT",
+              "type": "table",
+              "schema": "douyin"
+            },
+            "observed_at": "2026-11-12T06:35:11.990Z"
+          }
+        ]
+      }
+    ]
+  }
+}

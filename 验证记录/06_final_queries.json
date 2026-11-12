@@ -1,0 +1,471 @@
+{
+  "captured_at_utc": "2026-11-12 06:04:38 UTC",
+  "scope": "Current live results after browser acceptance and retaining concurrency fixtures as hidden. Values may change with later demonstration writes.",
+  "queries": [
+    {
+      "id": "Q01",
+      "description": "Creator's published videos; hidden videos are omitted.",
+      "sql": "SELECT v.video_id, v.caption, v.duration_seconds, v.published_at,\n       u.nickname AS creator, m.title AS music_title\nFROM douyin.\"VIDEO\" v\nJOIN douyin.\"USER\" u ON u.user_id = v.creator_id\nLEFT JOIN douyin.\"MUSIC\" m ON m.music_id = v.music_id\nWHERE v.creator_id = 1 AND v.visibility_status = 'PUBLISHED'\nORDER BY v.published_at DESC, v.video_id DESC;",
+      "rows": [
+        {
+          "video_id": 23,
+          "caption": "Final demo · Relational data in motion 1794463240774",
+          "duration_seconds": "3.000",
+          "published_at": "2026-11-12 06:00:50.316+00",
+          "creator": "Demo_Ada",
+          "music_title": null
+        },
+        {
+          "video_id": 22,
+          "caption": "Final demo · Relational data in motion",
+          "duration_seconds": "3.000",
+          "published_at": "2026-11-12 05:57:37.68+00",
+          "creator": "Demo_Ada",
+          "music_title": null
+        },
+        {
+          "video_id": 21,
+          "caption": "Final demo · Relational data in motion",
+          "duration_seconds": "3.000",
+          "published_at": "2026-11-12 05:53:51.711+00",
+          "creator": "Demo_Ada",
+          "music_title": null
+        },
+        {
+          "video_id": 3,
+          "caption": "SQL joins explained",
+          "duration_seconds": "55.125",
+          "published_at": "2026-11-03 09:00:00+00",
+          "creator": "Demo_Ada",
+          "music_title": null
+        },
+        {
+          "video_id": 1,
+          "caption": "CityU campus walk",
+          "duration_seconds": "25.500",
+          "published_at": "2026-11-02 09:00:00+00",
+          "creator": "Demo_Ada",
+          "music_title": "Campus Beat"
+        }
+      ]
+    },
+    {
+      "id": "Q02",
+      "description": "Exact topic search, including creator metadata.",
+      "sql": "SELECT t.topic_name, v.video_id, v.caption, u.nickname AS creator\nFROM douyin.\"TOPIC\" t\nJOIN douyin.\"VIDEO_TOPIC\" vt ON vt.topic_id = t.topic_id\nJOIN douyin.\"VIDEO\" v ON v.video_id = vt.video_id\nJOIN douyin.\"USER\" u ON u.user_id = v.creator_id\nWHERE t.topic_name = 'Study' AND v.visibility_status = 'PUBLISHED'\nORDER BY v.video_id;",
+      "rows": [
+        {
+          "topic_name": "Study",
+          "video_id": 1,
+          "caption": "CityU campus walk",
+          "creator": "Demo_Ada"
+        },
+        {
+          "topic_name": "Study",
+          "video_id": 3,
+          "caption": "SQL joins explained",
+          "creator": "Demo_Ada"
+        },
+        {
+          "topic_name": "Study",
+          "video_id": 5,
+          "caption": "Study desk setup",
+          "creator": "Demo_Chen"
+        }
+      ]
+    },
+    {
+      "id": "Q03",
+      "description": "Per-video counts include zero likes; count the joined key, not COUNT(*).",
+      "sql": "SELECT v.video_id, v.caption, COUNT(l.user_id) AS like_count\nFROM douyin.\"VIDEO\" v\nLEFT JOIN douyin.\"VIDEO_LIKE\" l ON l.video_id = v.video_id\nWHERE v.visibility_status = 'PUBLISHED'\nGROUP BY v.video_id, v.caption\nORDER BY v.video_id;",
+      "rows": [
+        {
+          "video_id": 1,
+          "caption": "CityU campus walk",
+          "like_count": 3
+        },
+        {
+          "video_id": 2,
+          "caption": "Coffee in Hong Kong",
+          "like_count": 2
+        },
+        {
+          "video_id": 3,
+          "caption": "SQL joins explained",
+          "like_count": 3
+        },
+        {
+          "video_id": 5,
+          "caption": "Study desk setup",
+          "like_count": 0
+        },
+        {
+          "video_id": 6,
+          "caption": "Harbour sunset",
+          "like_count": 1
+        },
+        {
+          "video_id": 7,
+          "caption": "An empty interaction example",
+          "like_count": 0
+        },
+        {
+          "video_id": 8,
+          "caption": "",
+          "like_count": 1
+        },
+        {
+          "video_id": 21,
+          "caption": "Final demo · Relational data in motion",
+          "like_count": 1
+        },
+        {
+          "video_id": 22,
+          "caption": "Final demo · Relational data in motion",
+          "like_count": 1
+        },
+        {
+          "video_id": 23,
+          "caption": "Final demo · Relational data in motion 1794463240774",
+          "like_count": 1
+        }
+      ]
+    },
+    {
+      "id": "Q04",
+      "description": "Visible comment tree; retain a redacted hidden parent as an anchor.",
+      "sql": "-- Hidden text and author identity are never emitted. A cycle guard bounds traversal.\nWITH RECURSIVE thread AS (\n    SELECT c.comment_id, c.parent_comment_id, c.author_id, c.body_text,\n           c.comment_status, c.created_at, 0 AS depth, ARRAY[c.comment_id] AS path\n    FROM douyin.\"COMMENT\" c\n    JOIN douyin.\"VIDEO\" v ON v.video_id = c.video_id\n    WHERE c.video_id = 1 AND c.parent_comment_id IS NULL\n      AND v.visibility_status = 'PUBLISHED'\n    UNION ALL\n    SELECT c.comment_id, c.parent_comment_id, c.author_id, c.body_text,\n           c.comment_status, c.created_at, p.depth + 1, p.path || c.comment_id\n    FROM thread p\n    JOIN douyin.\"COMMENT\" c ON c.parent_comment_id = p.comment_id AND c.video_id = 1\n    WHERE NOT c.comment_id = ANY(p.path)\n)\nSELECT comment_id, parent_comment_id, depth,\n       CASE WHEN comment_status = 'VISIBLE' THEN author_id END AS author_id,\n       CASE WHEN comment_status = 'VISIBLE' THEN body_text ELSE '[hidden]' END AS display_text,\n       comment_status, created_at\nFROM thread ORDER BY path;",
+      "rows": [
+        {
+          "comment_id": 1,
+          "parent_comment_id": null,
+          "depth": 0,
+          "author_id": 2,
+          "display_text": "Nice campus walk",
+          "comment_status": "VISIBLE",
+          "created_at": "2026-11-06 09:00:00+00"
+        },
+        {
+          "comment_id": 2,
+          "parent_comment_id": 1,
+          "depth": 1,
+          "author_id": 1,
+          "display_text": "Thank you",
+          "comment_status": "VISIBLE",
+          "created_at": "2026-11-06 09:01:00+00"
+        },
+        {
+          "comment_id": 3,
+          "parent_comment_id": 2,
+          "depth": 2,
+          "author_id": 3,
+          "display_text": "Where is this?",
+          "comment_status": "VISIBLE",
+          "created_at": "2026-11-06 09:02:00+00"
+        },
+        {
+          "comment_id": 4,
+          "parent_comment_id": 1,
+          "depth": 1,
+          "author_id": null,
+          "display_text": "[hidden]",
+          "comment_status": "HIDDEN",
+          "created_at": "2026-11-06 09:03:00+00"
+        },
+        {
+          "comment_id": 5,
+          "parent_comment_id": 4,
+          "depth": 2,
+          "author_id": 5,
+          "display_text": "A visible reply to a hidden anchor",
+          "comment_status": "VISIBLE",
+          "created_at": "2026-11-06 09:04:00+00"
+        }
+      ]
+    },
+    {
+      "id": "Q05",
+      "description": "Both directions in one SELECT: mutual connections appear in each role.",
+      "sql": "SELECT 'following' AS direction, u.user_id, u.nickname, f.followed_at\nFROM douyin.\"FOLLOW\" f\nJOIN douyin.\"USER\" u ON u.user_id = f.followed_id\nWHERE f.follower_id = 1\nUNION ALL\nSELECT 'follower' AS direction, u.user_id, u.nickname, f.followed_at\nFROM douyin.\"FOLLOW\" f\nJOIN douyin.\"USER\" u ON u.user_id = f.follower_id\nWHERE f.followed_id = 1\nORDER BY direction, user_id;",
+      "rows": [
+        {
+          "direction": "follower",
+          "user_id": 2,
+          "nickname": "Demo_Ben",
+          "followed_at": "2026-11-06 14:01:00+00"
+        },
+        {
+          "direction": "follower",
+          "user_id": 3,
+          "nickname": "Demo_Chen",
+          "followed_at": "2026-11-06 14:03:00+00"
+        },
+        {
+          "direction": "follower",
+          "user_id": 4,
+          "nickname": "Demo_Dina",
+          "followed_at": "2026-11-06 14:05:00+00"
+        },
+        {
+          "direction": "follower",
+          "user_id": 5,
+          "nickname": "Demo_Eli",
+          "followed_at": "2026-11-06 14:06:00+00"
+        },
+        {
+          "direction": "following",
+          "user_id": 2,
+          "nickname": "Demo_Ben",
+          "followed_at": "2026-11-06 14:00:00+00"
+        },
+        {
+          "direction": "following",
+          "user_id": 3,
+          "nickname": "Demo_Chen",
+          "followed_at": "2026-11-06 14:02:00+00"
+        }
+      ]
+    },
+    {
+      "id": "Q06",
+      "description": "Mutual follows for user 1; asymmetric follows are excluded.",
+      "sql": "SELECT u.user_id, u.nickname\nFROM douyin.\"FOLLOW\" outgoing\nJOIN douyin.\"FOLLOW\" incoming\n  ON incoming.follower_id = outgoing.followed_id\n AND incoming.followed_id = outgoing.follower_id\nJOIN douyin.\"USER\" u ON u.user_id = outgoing.followed_id\nWHERE outgoing.follower_id = 1\nORDER BY u.user_id;",
+      "rows": [
+        {
+          "user_id": 2,
+          "nickname": "Demo_Ben"
+        },
+        {
+          "user_id": 3,
+          "nickname": "Demo_Chen"
+        }
+      ]
+    },
+    {
+      "id": "Q07",
+      "description": "Collection contents for owner 1, retaining empty or hidden-only folders.",
+      "sql": "-- Put visibility inside the join subquery so a hidden-only collection is not lost.\nSELECT c.collection_id, c.collection_name, visible.item_no, visible.video_id,\n       visible.caption, visible.added_at\nFROM douyin.\"COLLECTION\" c\nLEFT JOIN (\n    SELECT ci.collection_id, ci.item_no, ci.video_id, v.caption, ci.added_at\n    FROM douyin.\"COLLECTION_ITEM\" ci\n    JOIN douyin.\"VIDEO\" v ON v.video_id = ci.video_id AND v.visibility_status = 'PUBLISHED'\n) visible ON visible.collection_id = c.collection_id\nWHERE c.owner_id = 1\nORDER BY c.collection_id, visible.item_no;",
+      "rows": [
+        {
+          "collection_id": 1,
+          "collection_name": "Study",
+          "item_no": 1,
+          "video_id": 1,
+          "caption": "CityU campus walk",
+          "added_at": "2026-11-06 16:00:00+00"
+        },
+        {
+          "collection_id": 1,
+          "collection_name": "Study",
+          "item_no": 2,
+          "video_id": 3,
+          "caption": "SQL joins explained",
+          "added_at": "2026-11-06 16:01:00+00"
+        },
+        {
+          "collection_id": 2,
+          "collection_name": "Favorites",
+          "item_no": 1,
+          "video_id": 1,
+          "caption": "CityU campus walk",
+          "added_at": "2026-11-06 16:02:00+00"
+        },
+        {
+          "collection_id": 5,
+          "collection_name": "Concurrency verification 1794462584687498000",
+          "item_no": null,
+          "video_id": null,
+          "caption": null,
+          "added_at": null
+        },
+        {
+          "collection_id": 6,
+          "collection_name": "Concurrency verification 1794462591504306000",
+          "item_no": null,
+          "video_id": null,
+          "caption": null,
+          "added_at": null
+        },
+        {
+          "collection_id": 8,
+          "collection_name": "Concurrency verification 1794462680123695000",
+          "item_no": null,
+          "video_id": null,
+          "caption": null,
+          "added_at": null
+        },
+        {
+          "collection_id": 9,
+          "collection_name": "Concurrency verification 1794462685929304000",
+          "item_no": null,
+          "video_id": null,
+          "caption": null,
+          "added_at": null
+        },
+        {
+          "collection_id": 10,
+          "collection_name": "Final demo 1794462842945",
+          "item_no": 1,
+          "video_id": 21,
+          "caption": "Final demo · Relational data in motion",
+          "added_at": "2026-11-12 05:54:08.161+00"
+        },
+        {
+          "collection_id": 10,
+          "collection_name": "Final demo 1794462842945",
+          "item_no": 2,
+          "video_id": 22,
+          "caption": "Final demo · Relational data in motion",
+          "added_at": "2026-11-12 05:57:50.309+00"
+        },
+        {
+          "collection_id": 11,
+          "collection_name": "Final demo 1794463067983",
+          "item_no": null,
+          "video_id": null,
+          "caption": null,
+          "added_at": null
+        },
+        {
+          "collection_id": 12,
+          "collection_name": "Final demo 1794463240774",
+          "item_no": 1,
+          "video_id": 23,
+          "caption": "Final demo · Relational data in motion 1794463240774",
+          "added_at": "2026-11-12 06:01:06.827+00"
+        }
+      ]
+    },
+    {
+      "id": "Q08",
+      "description": "Top published videos; ties share rank, video_id stabilizes presentation.",
+      "sql": "WITH counts AS (\n    SELECT v.video_id, v.caption, COUNT(l.user_id) AS like_count\n    FROM douyin.\"VIDEO\" v\n    LEFT JOIN douyin.\"VIDEO_LIKE\" l ON l.video_id = v.video_id\n    WHERE v.visibility_status = 'PUBLISHED'\n    GROUP BY v.video_id, v.caption\n)\nSELECT video_id, caption, like_count,\n       DENSE_RANK() OVER (ORDER BY like_count DESC) AS popularity_rank\nFROM counts ORDER BY like_count DESC, video_id LIMIT 10;",
+      "rows": [
+        {
+          "video_id": 1,
+          "caption": "CityU campus walk",
+          "like_count": 3,
+          "popularity_rank": 1
+        },
+        {
+          "video_id": 3,
+          "caption": "SQL joins explained",
+          "like_count": 3,
+          "popularity_rank": 1
+        },
+        {
+          "video_id": 2,
+          "caption": "Coffee in Hong Kong",
+          "like_count": 2,
+          "popularity_rank": 2
+        },
+        {
+          "video_id": 6,
+          "caption": "Harbour sunset",
+          "like_count": 1,
+          "popularity_rank": 3
+        },
+        {
+          "video_id": 8,
+          "caption": "",
+          "like_count": 1,
+          "popularity_rank": 3
+        },
+        {
+          "video_id": 21,
+          "caption": "Final demo · Relational data in motion",
+          "like_count": 1,
+          "popularity_rank": 3
+        },
+        {
+          "video_id": 22,
+          "caption": "Final demo · Relational data in motion",
+          "like_count": 1,
+          "popularity_rank": 3
+        },
+        {
+          "video_id": 23,
+          "caption": "Final demo · Relational data in motion 1794463240774",
+          "like_count": 1,
+          "popularity_rank": 3
+        },
+        {
+          "video_id": 5,
+          "caption": "Study desk setup",
+          "like_count": 0,
+          "popularity_rank": 4
+        },
+        {
+          "video_id": 7,
+          "caption": "An empty interaction example",
+          "like_count": 0,
+          "popularity_rank": 4
+        }
+      ]
+    },
+    {
+      "id": "Q09",
+      "description": "Active accounts ordered by published-video count, including non-creators.",
+      "sql": "SELECT u.user_id, u.nickname, COUNT(v.video_id) AS published_video_count\nFROM douyin.\"USER\" u\nLEFT JOIN douyin.\"VIDEO\" v\n  ON v.creator_id = u.user_id AND v.visibility_status = 'PUBLISHED'\nWHERE u.account_status = 'ACTIVE'\nGROUP BY u.user_id, u.nickname\nORDER BY published_video_count DESC, u.user_id;",
+      "rows": [
+        {
+          "user_id": 1,
+          "nickname": "Demo_Ada",
+          "published_video_count": 5
+        },
+        {
+          "user_id": 2,
+          "nickname": "Demo_Ben",
+          "published_video_count": 2
+        },
+        {
+          "user_id": 4,
+          "nickname": "Demo_Dina",
+          "published_video_count": 2
+        },
+        {
+          "user_id": 3,
+          "nickname": "Demo_Chen",
+          "published_video_count": 1
+        },
+        {
+          "user_id": 5,
+          "nickname": "Demo_Eli",
+          "published_video_count": 0
+        }
+      ]
+    },
+    {
+      "id": "Q10",
+      "description": "Topic popularity by distinct published videos; unused topics remain zero.",
+      "sql": "SELECT t.topic_id, t.topic_name, COUNT(DISTINCT v.video_id) AS published_video_count\nFROM douyin.\"TOPIC\" t\nLEFT JOIN douyin.\"VIDEO_TOPIC\" vt ON vt.topic_id = t.topic_id\nLEFT JOIN douyin.\"VIDEO\" v\n  ON v.video_id = vt.video_id AND v.visibility_status = 'PUBLISHED'\nGROUP BY t.topic_id, t.topic_name\nORDER BY published_video_count DESC, t.topic_id;",
+      "rows": [
+        {
+          "topic_id": 1,
+          "topic_name": "Study",
+          "published_video_count": 3
+        },
+        {
+          "topic_id": 2,
+          "topic_name": "Life",
+          "published_video_count": 3
+        },
+        {
+          "topic_id": 3,
+          "topic_name": "SQL",
+          "published_video_count": 1
+        },
+        {
+          "topic_id": 4,
+          "topic_name": "Music",
+          "published_video_count": 1
+        },
+        {
+          "topic_id": 5,
+          "topic_name": "Unused",
+          "published_video_count": 0
+        }
+      ]
+    }
+  ]
+}
