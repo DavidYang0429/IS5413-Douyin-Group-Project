@@ -3,3 +3,11 @@
 __pycache__/
 tests/
 public/
+**/.local
+**/.local/**
+**/.venv
+**/.venv/**
+**/.vercel
+**/.vercel/**
+**/__pycache__
+**/__pycache__/**

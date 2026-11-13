@@ -1,0 +1,11 @@
+.git/
+**/.local
+**/.local/**
+**/.venv
+**/.venv/**
+**/.vercel
+**/.vercel/**
+**/__pycache__
+**/__pycache__/**
+prototype/public/**
+prototype/tests/**
