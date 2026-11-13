@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-13",
+  "url": "https://is-5413-douyin-group-project.vercel.app",
+  "deployment": {
+    "id": "dpl_HCx2SCYMjdNpvwEcYG5JFeRyQrRs",
+    "status": "READY",
+    "target": "production",
+    "region": "sin1",
+    "source_commit": "77cfe685548dda583256195a82e4d56cb2d4e80c"
+  },
+  "browser": "Codex built-in browser (iab)",
+  "verified": [
+    "Authenticated demo login against PostgreSQL",
+    "Page reload restores login across function calls",
+    "Published verification video 25",
+    "Liked verification video 25",
+    "Posted and re-read comment 28",
+    "Q03 returned 12 rows including video 25 with one like",
+    "Final stable URL resolves to the tested production deployment",
+    "Anonymous visitors reach the sign-in page without Vercel authentication",
+    "Private local state excluded from native CLI source upload"
+  ],
+  "regression_tests": {
+    "signed_session_unit_checks": 8,
+    "http_restart_checks": 5
+  },
+  "public_http": {
+    "/": {
+      "status": 200,
+      "url": "https://is-5413-douyin-group-project.vercel.app/",
+      "content_security_policy": true
+    },
+    "/api/session": {
+      "status": 200,
+      "url": "https://is-5413-douyin-group-project.vercel.app/api/session",
+      "content_security_policy": true
+    }
+  },
+  "runtime_error_scan": {
+    "records": 0,
+    "level": "error OR fatal",
+    "start_utc": "2026-11-13T01:35:20.141Z",
+    "end_utc": "2026-11-13T01:40:20.141Z"
+  },
+  "limitations": [
+    "Supabase Free can pause after inactivity",
+    "Demo account password remains required",
+    "Sessions expire after one hour; logout clears browser cookie",
+    "No paid upgrade or keepalive automation was added"
+  ]
+}

@@ -2,6 +2,12 @@
 
 面向 IS5413 Database Management 小组作业的可运行原型：**10 个实体、43 个字段、PostgreSQL 17、10 项 SQL 报表**。
 
+## 在线使用
+
+**[打开 Loop 在线演示](https://is-5413-douyin-group-project.vercel.app/)**
+
+网站已部署到 Vercel，不依赖组员电脑持续开机。使用原演示账号密码登录；凭据由小组私下保管，不在公开仓库中提供。[部署说明](DEPLOYMENT.md)记录了云端配置和验证。
+
 ## 查看作业
 
 - [在线阅读最终报告](Final_Report_Douyin.md)
